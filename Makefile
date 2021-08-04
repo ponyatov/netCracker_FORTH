@@ -18,11 +18,20 @@ TMP     = $(CWD)/tmp
 
 # \ tool
 CURL    = curl -L -o
+JAVA    = java
+JAVAC   = javac
+GRADLE  = gradle
 # / tool
+
+# \ src
+J += $(shell find src -type f -regex ".+.java$$")
+F += $(shell find lib -type f -regex ".+.f$$")
+# / src
 
 # \ all
 .PHONY: all
-all:
+all: bin/main.class
+	$(JAVA) -cp bin main $(F)
 
 .PHONY: repl
 repl:
@@ -35,6 +44,11 @@ format: tmp/format
 tmp/format:
 	touch $@
 # / all
+
+# \ rule
+bin/%.class: src/%.java
+	$(JAVAC) -d bin $<
+# / rule
 
 # \ doc
 .PHONY: doc
@@ -59,7 +73,7 @@ Linux_install Linux_update:
 
 # \ merge
 MERGE  = Makefile .gitignore README.md LICENSE apt.txt apt.dev .vscode
-MERGE += bin doc src tmp
+MERGE += bin doc src tmp lib
 
 .PHONY: zip
 zip:

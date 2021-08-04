@@ -4,8 +4,13 @@
 (c) Dmitry Ponyatov <<dponyatov@gmail.com>> 2021 All rights reserved
 
 github: https://github.com/ponyatov/netCracker
-github: https://bitbucket.org/ponyatov/netcracker/src/ponymuck/
+
+bitbucket: https://bitbucket.org/ponyatov/netcracker/src/ponymuck/
 
 
-## Links
+## FORTH-like tiny script language in Java
+
+- AST-like data structures interpreter, no bytecode
+- objects on the stack, string-addressed memory
+- primitive lexer-only syntax
 
